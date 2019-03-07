@@ -1,0 +1,34 @@
+{  
+    "clients":[
+      {
+         "id": "a0ece5db-cd14-4f21-812f-966633e7be86",
+         "name": "Mateo",
+         "email": "mateo@quotezart.com",
+         "role": "admin"
+      }, 
+       {  
+          "id":"111111-a",
+          "name":"Britney",
+          "email":"britneyblankenship@quotezart.com",
+          "role":"admin"
+       },
+       {  
+          "id":"2222222-b",
+          "name":"Manning",
+          "email":"manningblankenship@quotezart.com",
+          "role":"admin"
+       },
+       {  
+          "id":"a3b8d425-2b60-4ad7-becc-bedf2ef860bd",
+          "name":"Barnett",
+          "email":"barnettblankenship@quotezart.com",
+          "role":"user"
+       },
+       {  
+          "id":"44e44268-dce8-4902-b662-1b34d2c10b8e",
+          "name":"Merrill",
+          "email":"merrillblankenship@quotezart.com",
+          "role":"user"
+       }
+    ]
+}

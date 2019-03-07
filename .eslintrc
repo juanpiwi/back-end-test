@@ -1,0 +1,16 @@
+{
+  "extends": "standard",
+  "globals": {
+    "after": true,
+    "afterEach": true,
+    "beforeEach": true,
+    "describe": true,
+    "it": true
+  },
+  "rules": {
+    "camelcase": "off",
+    "no-plusplus": "off",
+    "no-prototype-builtins": "off",
+    "no-use-before-define": "off"
+  }
+}
