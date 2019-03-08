@@ -100,7 +100,6 @@ describe('API Integration', () => {
         .expect('Content-Type', /json/)
         .expect(200)
         .then((res) => {
-          // console.log('qa', res.body)
           expect(res.body).to.deep.equal(serverResponse)
         })
     })
