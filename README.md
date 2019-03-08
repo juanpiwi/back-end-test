@@ -12,6 +12,7 @@ Se utilizo ExpressJS con NodeJS. Algunas de las features que tiene son:
 * [Supertest](https://github.com/visionmedia/supertest)
 * [Istanbul](https://istanbul.js.org)
 * [Eslint](https://standardjs.com)
+* [Lodash](https://lodash.com)
 
 ## Requerimientos
 
