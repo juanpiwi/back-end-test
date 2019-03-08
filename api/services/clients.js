@@ -4,6 +4,7 @@
 
 const BluebirdPromise = require('bluebird')
 const BluebirdRequest = BluebirdPromise.promisifyAll(require('request'))
+const _ = require('lodash/core')
 
 const { mocky } = require('./../../config')
 const Logger = require('./../common/log-handler')
@@ -31,7 +32,7 @@ class ClientService {
         if (response.statusCode === 200) {
           Logger.info(`services : getId : success | time: ${response.elapsedTime} ms`)
           const clients = response.body.clients
-          const client = clients.find(currClient => currClient.id === id)
+          const client = _.find(clients, (currClient) => currClient.id === id)
           if (client) {
             return BluebirdPromise.resolve(client)
           }
@@ -63,7 +64,8 @@ class ClientService {
         if (response.statusCode === 200) {
           Logger.info(`services : getName : success | time: ${response.elapsedTime} ms`)
           const clients = response.body.clients
-          const client = clients.find(currClient => currClient.name === name)
+          const client = _.find(clients, (currClient) => currClient.name === name)
+
           if (client) {
             return BluebirdPromise.resolve(client)
           }

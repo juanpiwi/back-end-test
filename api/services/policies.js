@@ -4,6 +4,7 @@
 
 const BluebirdPromise = require('bluebird')
 const BluebirdRequest = BluebirdPromise.promisifyAll(require('request'))
+const _ = require('lodash/core')
 
 const { mocky } = require('./../../config')
 const Logger = require('./../common/log-handler')
@@ -38,15 +39,14 @@ class PolicyService {
       if (!response.some(currResponse => currResponse.statusCode !== 200)) {
         const policies = response[0].body.policies
         const clients = response[1].body.clients
-        const policy = policies.find(currPolicy => {
-          return currPolicy.id === policyNumber
-        })
+        const policy = _.find(policies, (currPolicy) => currPolicy.id === policyNumber)
 
         Logger.info(`services : getPolicyNumber : policies : success | time: ${response[0].elapsedTime} ms`)
         Logger.info(`services : getPolicyNumber : clients : success | time: ${response[1].elapsedTime} ms`)
 
         if (policy) {
-          const client = clients.find(currClient => currClient.id === policy.clientId)
+          const client = _.find(clients, (currClient) => currClient.id === policy.clientId)
+
           if (client && client.role === 'admin') {
             return Promise.resolve(client)
           }
@@ -83,7 +83,7 @@ class PolicyService {
       .then(responsePolicies => {
         if (responsePolicies.statusCode === 200) {
           const clients = responsePolicies.body.clients
-          const client = clients.find(currClient => currClient.name === name)
+          const client = _.find(clients, (currClient) => currClient.name === name)
 
           Logger.info(`services : getName : success | time: ${responsePolicies.elapsedTime} ms`)
 
@@ -95,7 +95,7 @@ class PolicyService {
               .then(responseClients => {
                 if (responseClients.statusCode === 200) {
                   const policies = responseClients.body.policies
-                  const payload = policies.filter(currPolicy => currPolicy.clientId === client.id)
+                  const payload = _.filter(policies, currPolicy => currPolicy.clientId === client.id)
 
                   Logger.info(`services : getName : success | time: ${responseClients.elapsedTime} ms`)
                   return Promise.resolve(payload)
